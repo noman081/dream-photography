@@ -3,7 +3,6 @@ import { Card, Col } from 'react-bootstrap';
 
 const Category = (props) => {
     const { category, img, price, } = props.cat;
-    console.log(props)
     return (
         <Col>
             <Card>
