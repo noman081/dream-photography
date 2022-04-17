@@ -29,8 +29,8 @@ const Header = () => {
 
                         {
                             user ? <>
-                                <img src={user?.photoURL} alt="" className='rounded-circle mt-3 mx-2' width={30} height={30} />
-                                <p className="text-white mt-3">{user?.displayName}</p>
+                                <img src={user?.photoURL} alt="" className='rounded-circle my-auto mx-2' width={30} height={30} />
+                                <p className="text-white my-auto">{user?.displayName}</p>
                                 <button
                                     onClick={() => signOut(auth)}
                                     className="btn btn-link text-decoration-none">

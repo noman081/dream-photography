@@ -1,14 +1,15 @@
 import React from 'react';
-import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import google from '../../../images/social/google.png';
 import github from '../../../images/social/github.png';
 import auth from '../../../firebase.init';
 import { useNavigate } from 'react-router-dom';
 const SocialLogin = () => {
-    const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(
+    const [signInWithGoogle, googleUser, loading, error] = useSignInWithGoogle(
         auth);
+    const [signInWithGithub, githubUser, gitLoading, gitError] = useSignInWithGithub(auth);
     const navigate = useNavigate();
-    if (user) {
+    if (googleUser || githubUser) {
         navigate('/');
     }
     return (
@@ -26,6 +27,7 @@ const SocialLogin = () => {
                     <span className='px-2'>Google Sign In</span>
                 </button>
                 <button
+                    onClick={() => signInWithGithub()}
                     className='btn btn-outline-info w-50 d-block mx-auto my-2'>
                     <img style={{ width: '30px' }} src={github} alt="" />
                     <span className='px-2'>Github Sign In</span>
