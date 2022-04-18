@@ -8,15 +8,17 @@ import Login from './Pages/Login/Login/Login';
 import Register from './Pages/Login/Register/Register';
 import Checkout from './Pages/Checkout/Checkout';
 import RequireAuth from './Pages/Login/RequireAuth/RequireAuth';
+import AboutMe from './Pages/AboutMe/AboutMe';
 function App() {
   return (
-    <div>
+    <div className='d-flex flex-column min-vh-100'>
       <Header></Header>
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/home' element={<Home></Home>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
+        <Route path='/about' element={<AboutMe></AboutMe>}></Route>
         <Route path='/checkout/:checkOutName' element={
           <RequireAuth>
             <Checkout></Checkout>
