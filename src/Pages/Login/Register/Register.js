@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
@@ -7,6 +7,7 @@ import SocialLogin from '../SocialLogin/SocialLogin';
 
 const Register = () => {
     const navigate = useNavigate();
+    const [name, setName] = useState('');
     const [
         createUserWithEmailAndPassword,
         user,
@@ -16,9 +17,12 @@ const Register = () => {
 
     if (user) {
         navigate('/');
+        user.displayName = name;
     }
     const handleSubmit = event => {
         event.preventDefault();
+        const name = event.target.name.value;
+        setName(name);
         const email = event.target.email.value;
         const password = event.target.password.value;
         createUserWithEmailAndPassword(email, password);
@@ -30,7 +34,7 @@ const Register = () => {
             <h2 className='text-primary text-center my-2'>Please Register</h2>
             <Form className='mt-3' onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Control type="text" placeholder="Your Name" required />
+                    <Form.Control type="text" name='name' placeholder="Your Name" required />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Control type="email" name='email' placeholder="Enter email" required />

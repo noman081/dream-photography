@@ -9,6 +9,7 @@ const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
+    let errorMessage;
     const [
         signInWithEmailAndPassword,
         user,
@@ -19,6 +20,10 @@ const Login = () => {
 
     if (user) {
         navigate(from, { replace: true });
+    }
+    if (error) {
+        debugger;
+        errorMessage = <p className='text-danger'>{error.message}</p>;
     }
     const handleSubmit = event => {
         event.preventDefault();
@@ -36,6 +41,7 @@ const Login = () => {
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Control type="password" name='password' placeholder="Password" required />
                 </Form.Group>
+                {errorMessage}
                 <Button variant="primary w-50 mx-auto d-block mb-2" type="submit">
                     Login
                 </Button>
