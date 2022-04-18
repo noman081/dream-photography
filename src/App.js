@@ -10,6 +10,7 @@ import Checkout from './Pages/Checkout/Checkout';
 import RequireAuth from './Pages/Login/RequireAuth/RequireAuth';
 import AboutMe from './Pages/AboutMe/AboutMe';
 import Blogs from './Pages/Blogs/Blogs';
+import Success from './Pages/Checkout/Success/Success';
 function App() {
   return (
     <div className='d-flex flex-column min-vh-100'>
@@ -26,6 +27,9 @@ function App() {
             <Checkout></Checkout>
           </RequireAuth>
         }></Route>
+        <Route path='/success' element={<RequireAuth>
+          <Success></Success>
+        </RequireAuth>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
 

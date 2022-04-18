@@ -3,7 +3,7 @@ import { Card, Col } from 'react-bootstrap';
 import { useNavigate, useParams } from 'react-router-dom';
 
 const Category = (props) => {
-    const { category, img, price, } = props.cat;
+    const { category, img, price, description } = props.cat;
     const navigate = useNavigate();
     const handleBookingButton = () => {
         navigate(`checkout/${category}`)
@@ -16,8 +16,7 @@ const Category = (props) => {
                     <Card.Title>{category}</Card.Title>
                     <Card.Text>Price: {price}</Card.Text>
                     <Card.Text>
-                        This is a longer card with supporting text below as a natural
-                        lead-in to additional content. This content is a little bit longer.
+                        {description}
                     </Card.Text>
                     <button onClick={handleBookingButton} className="btn btn-primary">Book {category}</button>
                 </Card.Body>
